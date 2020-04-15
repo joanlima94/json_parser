@@ -10,7 +10,42 @@ void yyerror(char *);
 
 %%
 
+[{] {
+    return CHAVEABERTA;
+    }
 
+[}] {
+    return CHAVEFECHADA;
+    }
+
+[,] {
+    return VIRGU;
+    }
+
+[[] {
+    return COLABERTO;
+    }
+
+[]] {
+    return COLFECHADO;
+    }
+[:] {
+    return PONTO;
+    }
+
+[a-z0-9]+ {
+          return NOME;
+          }
+[0-9]+[.]?[0-9]+ {
+                return NUM;
+                }
+["] {
+    return ASPAS;
+    }
+
+. ;
+
+[\n] ;
 
 %%
 
