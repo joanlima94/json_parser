@@ -4,18 +4,47 @@
   #include <stdlib.h>
 void yyerror(char *c);
 int yylex(void);
+
 %}
 
-%token CHAVEABERTA NOME PONTO NUM CHAVEFECHADA ASPAS VIRGU COLABERTO COLFECHADO
-%left OP
+%token CHAVEABERTA NOME PONTOS NUM CHAVEFECHADA ASPAS VIRGU COLABERTO COLFECHADO
+%left VIRGU
 
 %%
 
+JSON:
+    CHAVEABERTA DENTRO CHAVEFECHADA {printf("VALIDO\n") ; return 0 ;}
+    |
+    ;
+DENTRO:
+      NOME PONTOS VALOR;
+      | DENTRO VIRGU DENTRO;
 
+PALAVRA:
+        ASPAS PALAVRAS ASPAS;
+
+PALAVRAS:
+        NOME;
+
+LISTA:
+      COLABERTO VALOR COLFECHADO;
+
+VALOR:
+      VALORES;
+      | VALOR VIRGU VALOR;
+
+
+VALORES:
+    NUM;
+    | LISTA;
+    | JSON;
+    | PALAVRA;
+    | COLABERTO COLFECHADO;
 
 %%
 
 void yyerror(char *s) {
+  printf("INVALIDO\n");
 
 }
 

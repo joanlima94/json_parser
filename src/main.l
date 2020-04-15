@@ -30,15 +30,15 @@ void yyerror(char *);
     return COLFECHADO;
     }
 [:] {
-    return PONTO;
+    return PONTOS;
     }
 
-[a-z0-9]+ {
-          return NOME;
-          }
+[a-zA-Z0-9]+ {
+              return NOME;
+             }
 [0-9]+[.]?[0-9]+ {
-                return NUM;
-                }
+                 return NUM;
+                 }
 ["] {
     return ASPAS;
     }
