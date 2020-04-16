@@ -33,7 +33,7 @@ void yyerror(char *);
     return PONTOS;
     }
 
-[a-z]+[0-9]*([ ]*[a-z]*[0-9]*)*(\n)* {
+[a-zA-Z]+[0-9]*([ ]*[a-zA-Z]*[0-9]*)*(\n)* {
               return NOME;
              }
 [0-9]+[.]?[0-9]+ {
@@ -41,7 +41,7 @@ void yyerror(char *);
                  }
 [\"] {
     return ASPAS;
-    }
+     }
 
 . ;
 

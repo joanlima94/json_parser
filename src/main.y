@@ -15,8 +15,6 @@ int yylex(void);
 
 JSON:
     CHAVEABERTA DENTRO CHAVEFECHADA {printf("VALIDO\n") ;}
-    |
-    ;
 
 DENTRO:
       PALAVRA PONTOS VALOR;
@@ -27,8 +25,6 @@ PALAVRA:
 
 PALAVRAS:
         NOME;
-        |
-        ;
 
 LISTA:
       COLABERTO VALOR COLFECHADO;
