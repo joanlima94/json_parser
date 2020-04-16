@@ -14,11 +14,12 @@ int yylex(void);
 %%
 
 JSON:
-    CHAVEABERTA DENTRO CHAVEFECHADA {printf("VALIDO\n") ;}
+    CHAVEABERTA DENTRO CHAVEFECHADA {printf("VALIDO\n");}
 
 DENTRO:
       PALAVRA PONTOS VALOR;
       | DENTRO VIRGU DENTRO;
+      | CHAVEABERTA DENTRO CHAVEFECHADA;
 
 PALAVRA:
         ASPAS PALAVRAS ASPAS;
@@ -33,19 +34,16 @@ VALOR:
       VALORES;
       | VALOR VIRGU VALOR;
 
-
 VALORES:
     NUM;
-    | LISTA;
-    | JSON;
     | PALAVRA;
+    | LISTA;
+    | DENTRO;
     | COLABERTO COLFECHADO;
-
 %%
 
 void yyerror(char *s) {
   printf("INVALIDO\n");
-
 }
 
 int main() {
